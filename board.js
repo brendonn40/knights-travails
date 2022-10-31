@@ -1,13 +1,13 @@
 export const boardFactory = () => {
-  let board = [];
+  let board = []
   for (let i = 0; i < 8; i++) {
-    let arr = [];
+    let arr = []
     for (let j = 0; j < 8; j++) {
-      arr.push(`[${i},${j}]`);
+      arr.push(`[${i},${j}]`)
     }
-    board.push(arr);
+    board.push(...arr)
   }
   return {
     board,
-  };
-};
+  }
+}
