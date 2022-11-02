@@ -41,3 +41,7 @@
 #chess-board .dark {
   background: #aaa;
 }
+img{
+  width: 30px;
+  height: auto;
+}

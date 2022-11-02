@@ -62,3 +62,21 @@ export function putKnightOnCell(x, y) {
   img.src = "./knight.svg";
   cell.appendChild(img);
 }
+export function makePath(arrayOfCoords) {
+  for (let i = 1; i < arrayOfCoords.length; i++) {
+    let name = `[data-row="${arrayOfCoords[i][0]}"][data-column="${arrayOfCoords[i][1]}"]`;
+    const cell = document.querySelector(name);
+    cell.innerText = i;
+  }
+  let cellName = `[data-row="${arrayOfCoords[0][0]}"][data-column="${arrayOfCoords[0][1]}"]`;
+  const oldPos = document.querySelector(cellName);
+  oldPos.innerHTML = "";
+  oldPos.style.backgroundColor = "red";
+  putKnightOnCell(...arrayOfCoords.pop());
+}
+function resetBoard(currentPos) {
+  const board = document.getElementById("display");
+  board.innerHTML = "";
+  createBoardDisplay();
+  putKnightOnCell(...currentPos);
+}
