@@ -51,6 +51,11 @@ export const knightFactory = () => {
   return {
     validMove,
     findPath,
-    knightPos,
+    get knightPos() {
+      return knightPos;
+    },
+    set knightPos(value) {
+      knightPos = value;
+    },
   };
 };

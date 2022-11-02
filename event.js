@@ -1,23 +1,30 @@
 import { makePath, resetBoard } from "./domStuff.js";
-import { knightFactory } from "./knight.js";
 
-function targetListener(knight) {
-  const button = document.getElementById("todo");
+export function targetListener(knight) {
+  const button = document.getElementById("new-target");
   button.addEventListener("click", function (e) {
     e.stopPropagation();
     resetBoard(knight.knightPos);
-    let target = cellListener();
-    makePath(knight.findPath(target));
-    knight.knightPos = target;
+    cellListener(knight);
   });
 }
-function cellListener() {
+function cellListener(knight) {
   const cells = document.querySelectorAll("td");
   let arr = Array.from(cells);
   arr.forEach((item) =>
     item.addEventListener("click", function (e) {
       e.stopPropagation();
-      return [item.getAttribute("data-row"), item.getAttribute("data-column")];
+      let target = [
+        parseInt(item.getAttribute("data-row")),
+        parseInt(item.getAttribute("data-column")),
+      ];
+      if (target === knight.knightPos) {
+        return;
+      }
+      let path = knight.findPath(target);
+      makePath(path);
+      knight.knightPos = target;
+      return;
     })
   );
 }

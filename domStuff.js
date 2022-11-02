@@ -74,8 +74,8 @@ export function makePath(arrayOfCoords) {
   oldPos.style.backgroundColor = "red";
   putKnightOnCell(...arrayOfCoords.pop());
 }
-function resetBoard(currentPos) {
-  const board = document.getElementById("display");
+export function resetBoard(currentPos) {
+  const board = document.getElementById("chess-board");
   board.innerHTML = "";
   createBoardDisplay();
   putKnightOnCell(...currentPos);
